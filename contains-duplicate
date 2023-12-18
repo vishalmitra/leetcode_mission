@@ -1,0 +1,7 @@
+#https://leetcode.com/problems/contains-duplicate/
+from collections import Counter
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        for i in  list(Counter(nums).values()):
+            if i>1:return True
+        return False
