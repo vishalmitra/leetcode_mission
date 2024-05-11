@@ -1,0 +1,40 @@
+The Card Game
+One day, Fred and his N friends were playing a card game in which each player [brows a card with a number written on it. The cards are such that a number X is written on front of the card, and the negative of that number is written on the back side of the card. This game has the following rules: -
+Each of the N players is asked to throw a card. After all the N cards are thrown, Fred has to flip one or more cards in consecutive order, only once.
+Your task is to help Fred flip the cards in such a way that the sum of the numbers, on front face of the cards, is the maximum.
+Input Specification:
+input1: An integer N denoting the number of cards (1 <= N <= 500) input2: An integer array containing N integers, where the ith integer denotes the value on the front of the card (-1000 <= input2i]<= 1000)
+Output Specification:
+Return the maximum sum of the numbers, on the front of the cards
+Example 1: input1: 5
+input2: (2,3. -1, -4. -2)
+Output: 8
+Explanation:
+Since Fred can flip consecutive cards only once, he chooses to flip the last three cards, which results in the maximum sum (-2 + 3 + 1 + 4 +2), i.e., 8.
+Therefore, 8 is returned as the output.
+Example 2: input1: 5
+input2: (-1, 2, 3, 4, -5)
+Output: 13
+Explanation:
+Since Fred can flip consecutive cards only once, he chooses to flip the last card. which results in the maximum sum (-1 + 2 + 3 + 4 + 5), i.e. 13.
+Therefore, 13 is returned as the output.
+
+
+
+my_list =  list(map(int, input().split()))
+l2 = []
+# [-2, 3, -1, -4, -2]  [ -1,2,3 ,4, -5]
+i=hight = 0
+while i < len(my_list):
+    if my_list[i] < 0:
+        j = i
+        while j < len(my_list) and my_list[j] < 0:
+            j += 1
+        hight =   sum(abs(k)  for k in my_list[i:j] )  if sum(abs(k)  for k in my_list[i:j] )  > hight  else hight
+        
+        l2.append(list(my_list[i:j]))
+        i = j
+    else:
+        i += 1
+
+print(sum(my_list)+2*hight)
